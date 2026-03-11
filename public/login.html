@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Music App</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .main-content {
+      width: 100%;
+      height: 100vh;
+      margin: 0;
+      border-radius: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .login-container {
+      background-color: var(--bg-elevated);
+      padding: 40px;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+      text-align: center;
+    }
+    .login-container h1 {
+      margin-bottom: 30px;
+      font-weight: 800;
+      color: var(--text-base);
+    }
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .login-input {
+      width: 100%;
+      padding: 14px 20px;
+      background-color: var(--bg-base);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      color: var(--text-base);
+      font-size: 1rem;
+      transition: all 0.2s;
+    }
+    .login-input:focus {
+      outline: none;
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 2px rgba(45, 212, 191, 0.2);
+    }
+    .login-btn {
+      background-color: var(--accent-color);
+      color: var(--bg-base);
+      border: none;
+      padding: 14px;
+      border-radius: 500px;
+      font-weight: 800;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.1s, background-color 0.2s;
+      margin-top: 10px;
+      width: 100%;
+    }
+    .login-btn:hover {
+      background-color: var(--accent-hover);
+      transform: scale(1.02);
+    }
+    .error-msg {
+      color: #ef4444;
+      font-size: 0.85rem;
+      margin-top: 10px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="main-content">
+    <div class="login-container">
+      <h1>Music App</h1>
+      <form class="login-form" id="loginForm">
+        <input type="text" id="username" class="login-input" placeholder="Username" required>
+        <input type="password" id="password" class="login-input" placeholder="Password" required>
+        <button type="submit" class="login-btn">Log In</button>
+        <div class="error-msg" id="errorMsg">Please enter both username and password.</div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // If already logged in, redirect to app
+    if (localStorage.getItem('isLoggedIn') === 'true') {
+      window.location.href = '/';
+    }
+
+    document.getElementById('loginForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const user = document.getElementById('username').value.trim();
+      const pass = document.getElementById('password').value.trim();
+      
+      // Simple mock auth for frontend demonstration
+      if (user && pass) {
+        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('username', user);
+        window.location.href = '/';
+      } else {
+        document.getElementById('errorMsg').style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>
