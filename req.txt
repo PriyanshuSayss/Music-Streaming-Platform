@@ -1,0 +1,5 @@
+axios
+cors
+express
+mongoose
+multer
