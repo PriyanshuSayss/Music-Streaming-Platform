@@ -19,19 +19,21 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 // Routes
 app.use('/api/songs', songRoutes);
 
-// Jamendo Search Route
-app.get('/api/jamendo/search', async (req, res) => {
+const JAMENDO_CLIENT_ID = '56d30c95'; // Keeping for reference initially, but you can remove the route below
+
+// Search Route (using iTunes API)
+app.get('/api/search', async (req, res) => {
   try {
     const query = req.query.q;
     if (!query) {
       return res.json([]);
     }
     
-    const response = await axios.get(`https://api.jamendo.com/v3.0/tracks/?client_id=${JAMENDO_CLIENT_ID}&format=jsonpretty&limit=20&search=${encodeURIComponent(query)}`);
+    const response = await axios.get(`https://itunes.apple.com/search?term=${encodeURIComponent(query)}&media=music&limit=20`);
     res.json(response.data.results);
   } catch (error) {
-    console.error('Error fetching from Jamendo:', error.message);
-    res.status(500).json({ error: 'Failed to fetch from Jamendo API' });
+    console.error('Error fetching search results:', error.message);
+    res.status(500).json({ error: 'Failed to fetch from Search API' });
   }
 });
 

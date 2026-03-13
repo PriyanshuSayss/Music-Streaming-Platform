@@ -250,7 +250,7 @@ searchInput.addEventListener("input", (e) => {
     songsTitle.textContent = "Searching...";
     
     try {
-      const res = await fetch(`/api/jamendo/search?q=${encodeURIComponent(query)}`);
+      const res = await fetch(`/api/search?q=${encodeURIComponent(query)}`);
       if (!res.ok) {
         if (res.status === 404) {
           throw new Error("Backend route not found. Did you restart the server?");
@@ -259,13 +259,15 @@ searchInput.addEventListener("input", (e) => {
       }
       const apiResults = await res.json();
       
-      // Map Jamendo API results to our format
-      const mappedResults = apiResults.map(track => ({
-        title: track.name,
-        artist: track.artist_name,
-        filePath: track.audio,
-        coverImage: track.image
-      }));
+      // Map iTunes API results to our format
+      const mappedResults = apiResults
+        .filter(track => track.previewUrl) // Only keep tracks with audio previews
+        .map(track => ({
+          title: track.trackName,
+          artist: track.artistName,
+          filePath: track.previewUrl,
+          coverImage: track.artworkUrl100 ? track.artworkUrl100.replace('100x100bb', '300x300bb') : '' // Get higher quality artwork
+        }));
       
       songsTitle.textContent = "Search Results";
       renderSongs(mappedResults);
