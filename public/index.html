@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spotify-like Music App</title>
+  <title>Musicify • Stream</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -47,7 +47,8 @@
     </header>
     <nav class="sidebar">
       <div class="logo">
-        <h2>Music App</h2>
+        <div class="logo-icon" aria-hidden="true"></div>
+        <h2>Musicify</h2>
       </div>
       <ul class="nav-links">
         <li class="active" id="nav-home">Home</li>
@@ -82,7 +83,31 @@
     <main class="main-content">
       <div class="content-area" id="home-view">
         <h2>Good evening</h2>
-        
+
+        <section class="featured-grid">
+          <div class="featured-card">
+            <div class="featured-cover" style="background-image: linear-gradient(135deg, rgba(29, 185, 84, 0.75), rgba(0,0,0,0.65));"></div>
+            <div class="featured-info">
+              <h3>Made For You</h3>
+              <p>Daily Mix</p>
+            </div>
+          </div>
+          <div class="featured-card">
+            <div class="featured-cover" style="background-image: linear-gradient(135deg, rgba(255, 105, 180, 0.75), rgba(0,0,0,0.65));"></div>
+            <div class="featured-info">
+              <h3>Top Charts</h3>
+              <p>Global hits</p>
+            </div>
+          </div>
+          <div class="featured-card">
+            <div class="featured-cover" style="background-image: linear-gradient(135deg, rgba(0, 176, 255, 0.75), rgba(0,0,0,0.65));"></div>
+            <div class="featured-info">
+              <h3>New Releases</h3>
+              <p>Fresh tracks</p>
+            </div>
+          </div>
+        </section>
+
         <section class="songs-section" id="recently-played-section" style="display: none; margin-bottom: 30px;">
           <h3>Jump Back In</h3>
           <div id="recentList" class="recent-grid">
