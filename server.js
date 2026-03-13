@@ -19,8 +19,6 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 // Routes
 app.use('/api/songs', songRoutes);
 
-const JAMENDO_CLIENT_ID = '56d30c95'; // Keeping for reference initially, but you can remove the route below
-
 // Search Route (using iTunes API)
 app.get('/api/search', async (req, res) => {
   try {
