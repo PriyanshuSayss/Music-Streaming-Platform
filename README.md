@@ -5,7 +5,7 @@ A full-stack, Spotify-inspired music streaming application built entirely with v
 ## Features ✨
 
 *   **Spotify-Inspired Aesthetic:** A premium, dark-themed UI featuring deep burgundy and champagne accents, complete with glassmorphism overlays and smooth micro-animations.
-*   **Jamendo API Integration:** Search for and listen to thousands of free, royalty-free tracks directly from the Jamendo music database.
+*   **Apple iTunes API Integration:** Search for and listen to thousands of free, high-quality 30-second music previews directly from the iTunes database.
 *   **Local Music Uploads:** Upload your own personal `.mp3` files along with custom cover art directly into the player.
 *   **Custom Playlists:** Create unlimited personal playlists and dynamically add tracks to them using the custom context menus.
 *   **Up Next Queue:** Add specific tracks to play next, overriding the current continuous flow.
