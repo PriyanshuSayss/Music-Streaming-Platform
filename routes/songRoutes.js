@@ -2,7 +2,31 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const path = require('path');
-const Song = require('../models/Song');
+const fs = require('fs');
+const crypto = require('crypto');
+
+// Path to the JSON file that stores song metadata
+const SONGS_FILE = path.join(__dirname, '..', 'songs.json');
+
+// Helper: read songs from JSON file
+function readSongs() {
+  try {
+    if (!fs.existsSync(SONGS_FILE)) {
+      fs.writeFileSync(SONGS_FILE, '[]', 'utf-8');
+      return [];
+    }
+    const data = fs.readFileSync(SONGS_FILE, 'utf-8');
+    return JSON.parse(data);
+  } catch (err) {
+    console.error('Error reading songs.json:', err);
+    return [];
+  }
+}
+
+// Helper: write songs to JSON file
+function writeSongs(songs) {
+  fs.writeFileSync(SONGS_FILE, JSON.stringify(songs, null, 2), 'utf-8');
+}
 
 // Configure multer for file uploads
 const storage = multer.diskStorage({
@@ -17,9 +41,9 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // Get all songs
-router.get('/', async (req, res) => {
+router.get('/', (req, res) => {
   try {
-    const songs = await Song.find().sort({ createdAt: -1 });
+    const songs = readSongs().sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
     res.json(songs);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -27,9 +51,10 @@ router.get('/', async (req, res) => {
 });
 
 // Get single song
-router.get('/:id', async (req, res) => {
+router.get('/:id', (req, res) => {
   try {
-    const song = await Song.findById(req.params.id);
+    const songs = readSongs();
+    const song = songs.find(s => s._id === req.params.id);
     if (!song) {
       return res.status(404).json({ message: 'Song not found' });
     }
@@ -40,35 +65,43 @@ router.get('/:id', async (req, res) => {
 });
 
 // Upload a new song
-router.post('/', upload.fields([{ name: 'audio', maxCount: 1 }, { name: 'cover', maxCount: 1 }]), async (req, res) => {
+router.post('/', upload.fields([{ name: 'audio', maxCount: 1 }, { name: 'cover', maxCount: 1 }]), (req, res) => {
   try {
     const audioFile = req.files && req.files['audio'] ? req.files['audio'][0].path : '';
     const coverFile = req.files && req.files['cover'] ? req.files['cover'][0].path : '';
 
-    const song = new Song({
+    const song = {
+      _id: crypto.randomUUID(),
       title: req.body.title,
       artist: req.body.artist,
-      album: req.body.album,
-      genre: req.body.genre,
-      duration: req.body.duration,
+      album: req.body.album || '',
+      genre: req.body.genre || '',
+      duration: req.body.duration || 0,
       filePath: audioFile,
-      coverImage: coverFile || req.body.coverImage
-    });
+      coverImage: coverFile || req.body.coverImage || '',
+      createdAt: new Date().toISOString()
+    };
 
-    const newSong = await song.save();
-    res.status(201).json(newSong);
+    const songs = readSongs();
+    songs.push(song);
+    writeSongs(songs);
+
+    res.status(201).json(song);
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
 });
 
 // Delete a song
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', (req, res) => {
   try {
-    const song = await Song.findByIdAndDelete(req.params.id);
-    if (!song) {
+    let songs = readSongs();
+    const songIndex = songs.findIndex(s => s._id === req.params.id);
+    if (songIndex === -1) {
       return res.status(404).json({ message: 'Song not found' });
     }
+    songs.splice(songIndex, 1);
+    writeSongs(songs);
     res.json({ message: 'Song deleted' });
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -76,4 +109,3 @@ router.delete('/:id', async (req, res) => {
 });
 
 module.exports = router;
-

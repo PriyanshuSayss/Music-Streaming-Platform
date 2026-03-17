@@ -1,11 +1,8 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require('path');
 const axios = require('axios');
 const songRoutes = require('./routes/songRoutes');
-
-const JAMENDO_CLIENT_ID = '56d30c95';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -44,13 +41,6 @@ app.get('/', (req, res) => {
   console.log('Serving index.html from:', indexPath);
   res.sendFile(indexPath);
 });
-
-// Connect to MongoDB
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/musicstreamingapp';
-
-mongoose.connect(MONGO_URI)
-  .then(() => console.log('Connected to MongoDB'))
-  .catch(err => console.error('MongoDB connection error:', err));
 
 // Start server
 app.listen(PORT, () => {

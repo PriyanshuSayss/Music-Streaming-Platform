@@ -1,6 +1,6 @@
 # Music Streaming Platform 🎵
 
-A full-stack, Spotify-inspired music streaming application built entirely with vanilla web technologies, Node.js, Express, and MongoDB.
+A full-stack, Spotify-inspired music streaming application built entirely with vanilla web technologies, Node.js, and Express.
 
 ## Features ✨
 
@@ -11,14 +11,14 @@ A full-stack, Spotify-inspired music streaming application built entirely with v
 *   **Up Next Queue:** Add specific tracks to play next, overriding the current continuous flow.
 *   **Jump Back In:** A dedicated, horizontally scrolling listen history section on the home page tracking your 20 most recently played songs.
 *   **Advanced Player Controls:** Fully functional *Shuffle* and *Repeat* (All/One) modes that intuitively handle linear or randomized playback.
-*   **Persistent State:** User preferences (volume, shuffle/repeat states), playlists, and history are saved persistently across sessions.
+*   **Persistent State:** User preferences (volume, shuffle/repeat states), playlists, and history are saved persistently across sessions via localStorage.
 
 ## Tech Stack 🛠️
 
 *   **Frontend**: HTML5, Vanilla JavaScript, Vanilla CSS (Grid & Flexbox). No frontend framework overhead.
 *   **Backend**: Node.js & Express.js.
-*   **Database**: MongoDB (via Mongoose) for tracking local song uploads.
-*   **Storage**: Local `multer` file system storage for uploaded audio and cover files.
+*   **Data Storage**: Local JSON file (`songs.json`) for tracking uploaded song metadata. No external database required.
+*   **File Storage**: Local `multer` file system storage for uploaded audio and cover files.
 
 ## Local Setup & Installation ⚙️
 
@@ -33,19 +33,16 @@ A full-stack, Spotify-inspired music streaming application built entirely with v
    npm install
    ```
 
-3. **Start MongoDB**
-   Ensure you have a local instance of MongoDB running on your machine (default port `27017`).
-
-4. **Start the application**
+3. **Start the application**
    ```bash
    npm start
    ```
 
-5. **View the app**
+4. **View the app**
    Open your browser and navigate to `http://localhost:3000`.
 
 ## Deployment 🚀
 
-This application handles raw file uploads to a local `uploads/` directory. If deploying to cloud platforms (like Render), a **Persistent Disk** mount is required to prevent uploaded `.mp3` files from being deleted during server restarts.
+This application handles raw file uploads to a local `uploads/` directory. If deploying to cloud platforms (like Render), a **Persistent Disk** mount is required to prevent uploaded `.mp3` files and the `songs.json` data file from being deleted during server restarts.
 
 *Note: The project requires Node.js v20+.*
