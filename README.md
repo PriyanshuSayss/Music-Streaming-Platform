@@ -1,10 +1,10 @@
 # Monk 🎵
 
-A full-stack, Spotify-inspired music streaming application built entirely with vanilla web technologies, Node.js, and Express.
+A full-stack music streaming platform built entirely with vanilla web technologies, Node.js, and Express.
 
 ## Features ✨
 
-*   **Spotify-Inspired Aesthetic:** A premium, dark-themed UI featuring deep burgundy and champagne accents, complete with glassmorphism overlays and smooth micro-animations.
+*   **Premium Aesthetic:** A sleek, dark-themed UI featuring deep burgundy and champagne accents, complete with glassmorphism overlays and smooth micro-animations.
 *   **Apple iTunes API Integration:** Search for and listen to thousands of free, high-quality 30-second music previews directly from the iTunes database.
 *   **Local Music Uploads:** Upload your own personal `.mp3` files along with custom cover art directly into the player.
 *   **Custom Playlists:** Create unlimited personal playlists and dynamically add tracks to them using the custom context menus.

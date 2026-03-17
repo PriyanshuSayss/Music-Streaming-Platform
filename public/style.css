@@ -598,7 +598,7 @@ body {
   transform: scale(1.04);
 }
 
-/* Featured Cards (Like Spotify home) */
+/* Featured Cards */
 .featured-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
