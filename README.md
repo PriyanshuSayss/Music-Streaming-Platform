@@ -1,4 +1,4 @@
-# Music Streaming Platform 🎵
+# Monk 🎵
 
 A full-stack, Spotify-inspired music streaming application built entirely with vanilla web technologies, Node.js, and Express.
 
