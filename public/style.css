@@ -1,27 +1,27 @@
 :root {
-  --bg-gradient: radial-gradient(circle at top, #0a0f1a 0%, #050612 60%, #02020a 100%);
-  --bg-base: #050612;
-  --bg-elevated: rgba(18, 22, 38, 0.8);
-  --bg-highlight: rgba(255, 255, 255, 0.06);
-  --bg-hover: rgba(255, 255, 255, 0.10);
+  --bg-gradient: radial-gradient(circle at top, #fdf6f0 0%, #f9f2ea 60%, #f5ede2 100%);
+  --bg-base: #F9F8F6;
+  --bg-elevated: rgba(235, 228, 218, 0.85);
+  --bg-highlight: rgba(255, 77, 109, 0.06);
+  --bg-hover: rgba(255, 77, 109, 0.10);
 
-  --text-base: #F3F6FF;
-  --text-subdued: rgba(243, 246, 255, 0.7);
+  --text-base: #1A1A1A;
+  --text-subdued: rgba(26, 26, 26, 0.55);
 
-  --accent-color: #2BD4FF;
-  --accent-hover: #65e4ff;
-  --accent-muted: rgba(43, 212, 255, 0.25);
+  --accent-color: #FF4D6D;
+  --accent-hover: #ff7091;
+  --accent-muted: rgba(255, 77, 109, 0.18);
 
   --sidebar-width: 260px;
   --player-height: 96px;
 
-  --player-bg: rgba(6, 8, 18, 0.9);
-  --sidebar-bg: rgba(9, 12, 24, 0.78);
-  --topbar-bg: rgba(10, 14, 30, 0.68);
+  --player-bg: rgba(245, 237, 226, 0.97);
+  --sidebar-bg: rgba(238, 230, 220, 0.92);
+  --topbar-bg: rgba(248, 243, 236, 0.92);
 
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-light: rgba(255, 255, 255, 0.12);
-  --shadow-soft: 0 16px 40px rgba(0, 0, 0, 0.6);
+  --border-subtle: rgba(26, 26, 26, 0.08);
+  --border-light: rgba(26, 26, 26, 0.12);
+  --shadow-soft: 0 16px 40px rgba(180, 100, 60, 0.12);
 }
 
 * {
@@ -80,8 +80,8 @@ body {
   width: 36px;
   height: 36px;
   border-radius: 12px;
-  background: linear-gradient(135deg, var(--accent-color), rgba(29, 185, 84, 0.6));
-  box-shadow: 0 12px 28px rgba(29, 185, 84, 0.35);
+  background: linear-gradient(135deg, var(--accent-color), rgba(251, 191, 36, 0.8));
+  box-shadow: 0 12px 28px rgba(255, 77, 109, 0.3);
   position: relative;
 }
 
@@ -131,7 +131,7 @@ body {
 
 .nav-links li.active {
   color: var(--text-base);
-  background-color: rgba(29, 185, 84, 0.18);
+  background-color: rgba(255, 77, 109, 0.12);
 }
 
 .nav-links li.active::before {
@@ -251,7 +251,7 @@ body {
 /* Main Content */
 .main-content {
   grid-area: main;
-  background: rgba(0, 0, 0, 0.35);
+  background: rgba(255, 250, 245, 0.7);
   backdrop-filter: blur(28px);
   -webkit-backdrop-filter: blur(28px);
   border-radius: 18px;
@@ -314,7 +314,7 @@ body {
 }
 
 .nav-arrow {
-  background: rgba(0,0,0,0.5);
+  background: rgba(26, 26, 26, 0.08);
   border: none;
   color: var(--text-base);
   cursor: pointer;
@@ -334,7 +334,7 @@ body {
 }
 
 .nav-arrow:not(:disabled):hover {
-  background: rgba(0,0,0,0.8);
+  background: rgba(26, 26, 26, 0.16);
 }
 
 .top-home-btn {
@@ -429,8 +429,8 @@ body {
 }
 
 .premium-btn {
-  background-color: rgba(43, 212, 255, 0.15);
-  color: rgba(243, 246, 255, 0.95);
+  background-color: rgba(255, 77, 109, 0.12);
+  color: #1A1A1A;
   border: none;
   border-radius: 500px;
   padding: 8px 16px;
@@ -449,8 +449,8 @@ body {
 .user-profile .avatar {
   width: 34px;
   height: 34px;
-  background-color: rgba(29, 185, 84, 0.9);
-  color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(255, 77, 109, 0.9);
+  color: rgba(255, 255, 255, 0.95);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -458,7 +458,7 @@ body {
   font-weight: 800;
   font-size: 0.9rem;
   cursor: pointer;
-  border: 2px solid rgba(29, 185, 84, 0.45);
+  border: 2px solid rgba(255, 77, 109, 0.35);
   box-sizing: content-box;
 }
 
@@ -607,8 +607,8 @@ body {
 }
 
 .featured-card {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(26, 26, 26, 0.08);
   border-radius: 16px;
   overflow: hidden;
   display: flex;
@@ -621,7 +621,7 @@ body {
 .featured-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.85);
 }
 
 .featured-cover {
@@ -676,7 +676,7 @@ body {
 }
 
 .song-card {
-  background-color: rgba(255, 255, 255, 0.04);
+  background-color: rgba(255, 255, 255, 0.6);
   padding: 16px;
   border-radius: 12px;
   cursor: pointer;
@@ -687,10 +687,10 @@ body {
 }
 
 .song-card:hover {
-  background-color: rgba(255, 255, 255, 0.08);
+  background-color: rgba(255, 255, 255, 0.9);
   transform: translateY(-5px);
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65);
-  border-color: rgba(29, 185, 84, 0.35);
+  border-color: rgba(255, 77, 109, 0.35);
 }
 
 .song-card .cover {
@@ -703,7 +703,7 @@ body {
   justify-content: center;
   font-size: 3rem;
   color: var(--accent-color);
-  background: linear-gradient(135deg, rgba(29, 185, 84, 0.12), rgba(0, 0, 0, 0.2));
+  background: linear-gradient(135deg, rgba(255, 77, 109, 0.12), rgba(251, 191, 36, 0.1));
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
@@ -848,7 +848,7 @@ body {
 .options-btn:hover {
   transform: scale(1.1) !important;
   background-color: var(--accent-color);
-  color: var(--bg-base);
+  color: #fff;
 }
 
 .context-menu {
@@ -890,10 +890,10 @@ body {
 /* Bottom Player */
 .bottom-player {
   grid-area: player;
-  background-color: rgba(0, 0, 0, 0.72);
+  background-color: rgba(238, 228, 215, 0.97);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: 1px solid rgba(26, 26, 26, 0.1);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -912,7 +912,7 @@ body {
 .album-art {
   width: 56px;
   height: 56px;
-  background: linear-gradient(135deg, var(--bg-hover), var(--bg-base));
+  background: linear-gradient(135deg, rgba(255, 77, 109, 0.15), rgba(251, 191, 36, 0.1));
   border-radius: 4px;
   box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
@@ -953,7 +953,7 @@ body {
 }
 
 .control-btn {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(26, 26, 26, 0.07);
   border: none;
   color: var(--text-subdued);
   cursor: pointer;
@@ -968,7 +968,7 @@ body {
 
 .control-btn:hover:not(:disabled) {
   color: var(--text-base);
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(26, 26, 26, 0.12);
 }
 
 .control-btn:disabled {
@@ -1025,7 +1025,7 @@ body {
 .progress-bar-wrapper {
   flex-grow: 1;
   height: 4px;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(26, 26, 26, 0.15);
   border-radius: 2px;
   cursor: pointer;
   position: relative;
@@ -1099,7 +1099,7 @@ audio {
 .volume-bar-wrapper {
   flex-grow: 1;
   height: 4px;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(26, 26, 26, 0.15);
   border-radius: 2px;
   cursor: pointer;
   position: relative;
@@ -1143,13 +1143,12 @@ audio {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(26, 26, 26, 0.2);
   border: 3px solid transparent;
   background-clip: padding-box;
   border-radius: 8px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(26, 26, 26, 0.35);
 }
-
