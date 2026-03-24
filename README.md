@@ -1,48 +1,41 @@
 # Monk 🎵
 
-A full-stack music streaming platform built entirely with vanilla web technologies, Node.js, and Express.
+A full-stack music streaming platform built entirely with vanilla web technologies — no server required.
 
 ## Features ✨
 
 *   **Premium Aesthetic:** A sleek, dark-themed UI featuring deep burgundy and champagne accents, complete with glassmorphism overlays and smooth micro-animations.
 *   **Apple iTunes API Integration:** Search for and listen to thousands of free, high-quality 30-second music previews directly from the iTunes database.
-*   **Local Music Uploads:** Upload your own personal `.mp3` files along with custom cover art directly into the player.
+*   **Local Music Uploads:** Upload your own personal `.mp3` files along with custom cover art. Files are stored in your browser's IndexedDB.
 *   **Custom Playlists:** Create unlimited personal playlists and dynamically add tracks to them using the custom context menus.
 *   **Up Next Queue:** Add specific tracks to play next, overriding the current continuous flow.
 *   **Jump Back In:** A dedicated, horizontally scrolling listen history section on the home page tracking your 20 most recently played songs.
 *   **Advanced Player Controls:** Fully functional *Shuffle* and *Repeat* (All/One) modes that intuitively handle linear or randomized playback.
-*   **Persistent State:** User preferences (volume, shuffle/repeat states), playlists, and history are saved persistently across sessions via localStorage.
+*   **Persistent State:** All data — uploaded songs, playlists, preferences, and history — is saved persistently in your browser across sessions.
 
 ## Tech Stack 🛠️
 
 *   **Frontend**: HTML5, Vanilla JavaScript, Vanilla CSS (Grid & Flexbox). No frontend framework overhead.
-*   **Backend**: Node.js & Express.js.
-*   **Data Storage**: Local JSON file (`songs.json`) for tracking uploaded song metadata. No external database required.
-*   **File Storage**: Local `multer` file system storage for uploaded audio and cover files.
+*   **Storage**: Browser IndexedDB for audio/cover files, localStorage for metadata and preferences.
+*   **API**: Apple iTunes Search API (called directly from the browser).
 
-## Local Setup & Installation ⚙️
+## Live Demo 🌐
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/PriyanshuSayss/Music-Streaming-Platform.git
-   cd Music-Streaming-Platform
-   ```
+👉 [https://priyanshusayss.github.io/Music-Streaming-Platform/](https://priyanshusayss.github.io/Music-Streaming-Platform/)
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+## Local Setup ⚙️
 
-3. **Start the application**
-   ```bash
-   npm start
-   ```
+No server or dependencies needed! Just open `docs/index.html` in your browser, or use a local file server:
 
-4. **View the app**
-   Open your browser and navigate to `http://localhost:3000`.
+```bash
+# Using Python
+cd docs && python -m http.server 3000
 
-## Deployment 🚀
+# Using VS Code Live Server extension
+# Right-click docs/index.html → Open with Live Server
+```
 
-This application handles raw file uploads to a local `uploads/` directory. If deploying to cloud platforms (like Render), a **Persistent Disk** mount is required to prevent uploaded `.mp3` files and the `songs.json` data file from being deleted during server restarts.
+Then navigate to `http://localhost:3000`.
 
-*Note: The project requires Node.js v20+.*
+*Note: The app runs entirely in the browser. Your uploaded songs are stored locally in IndexedDB.*
+
